@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:three_dimensional_model/view/detail/viewdetail.dart';
 
 class ViewManage extends StatefulWidget {
   const ViewManage({super.key});
@@ -117,7 +118,14 @@ class _ViewManageState extends State<ViewManage> {
                       34,
                     ).withValues(alpha: 0.9),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => ViewDetail(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     'View Detail',
                     style: TextStyle(
@@ -159,56 +167,66 @@ class _ViewManageState extends State<ViewManage> {
           ),
           itemCount: 6,
           itemBuilder: (context, index) {
-            return Card(
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
+            return GestureDetector(
+              onTap: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => ViewDetail(),
+                  ),
+                );
+              },
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomStart,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
 
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      color: Colors.black.withValues(alpha: 0.5),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Jordan 1 Retro High Dior',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.black.withValues(alpha: 0.5),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Jordan 1 Retro High Dior',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '฿85,000',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white70,
+                            Text(
+                              '฿85,000',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white70,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );
