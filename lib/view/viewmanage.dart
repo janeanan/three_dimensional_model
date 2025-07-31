@@ -19,9 +19,9 @@ class _ViewManageState extends State<ViewManage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              const Color.fromARGB(255, 0, 33, 82),
-              const Color.fromARGB(255, 0, 21, 39),
-              const Color.fromARGB(255, 0, 15, 27),
+              const Color.fromARGB(255, 255, 255, 255),
+              const Color.fromARGB(255, 221, 240, 255),
+              const Color.fromARGB(255, 173, 218, 255),
             ],
           ),
         ),
@@ -29,7 +29,7 @@ class _ViewManageState extends State<ViewManage> {
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: Column(children: [banner()]),
+              child: Column(spacing: 35, children: [banner(), itemGrid()]),
             ),
           ),
         ),
@@ -37,135 +37,184 @@ class _ViewManageState extends State<ViewManage> {
     );
   }
 
-  Widget banner() {
+  banner() {
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: const Color.fromARGB(147, 187, 187, 187),
-            blurRadius: 4,
-            offset: Offset(2, 2),
+        image: const DecorationImage(
+          image: NetworkImage(
+            'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
           ),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(color: Colors.grey, blurRadius: 3, offset: Offset(3, 3)),
         ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // พื้นหลังรูป
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            // gradient overlay
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black.withValues(alpha: 0.3),
-                    Colors.transparent,
-                    Colors.black.withValues(alpha: 0.4),
-                  ],
-                ),
-              ),
-            ),
-            // เนื้อหา
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 10,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(20),
-                        ),
-                        color: Colors.white.withValues(alpha: 0.8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 4,
-                        ),
-                        child: Text(
-                          'NIKE',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w900,
-                            color: const Color.fromARGB(255, 22, 0, 117),
-                          ),
-                        ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 26, 26, 26),
+                    borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: Text(
+                      'NIKE',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 6),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                        ),
-                        color: Colors.white.withValues(alpha: 0.8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 4,
-                        ),
-                        child: Text(
-                          'Jordan 1 Retro High Dior',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 22, 0, 117),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          22,
-                          0,
-                          117,
-                        ).withValues(alpha: 0.7),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'View Detail',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: Text(
+                      'Jordan 1 Retro High Dior',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 1, 0, 66),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(
+                      255,
+                      1,
+                      0,
+                      34,
+                    ).withValues(alpha: 0.9),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'View Detail',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  itemGrid() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 10,
+      children: [
+        Text(
+          'Product list',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.w900,
+            color: const Color.fromARGB(255, 0, 12, 34),
+          ),
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 4,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+          ),
+          itemCount: 6,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomStart,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      color: Colors.black.withValues(alpha: 0.5),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Jordan 1 Retro High Dior',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '฿85,000',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }
