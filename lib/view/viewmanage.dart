@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:three_dimensional_model/model/product_model.dart';
 import 'package:three_dimensional_model/view/detail/viewdetail.dart';
 
 class ViewManage extends StatefulWidget {
@@ -165,8 +166,9 @@ class _ViewManageState extends State<ViewManage> {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),
-          itemCount: 6,
+          itemCount: itemList.length,
           itemBuilder: (context, index) {
+            var itemIndex = itemList[index];
             return GestureDetector(
               onTap: () {
                 Navigator.push<void>(
@@ -189,10 +191,12 @@ class _ViewManageState extends State<ViewManage> {
                       Container(
                         width: double.infinity,
                         height: double.infinity,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(
-                              'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
+                              itemIndex.imageUrl.isNotEmpty
+                                  ? itemIndex.imageUrl.toString()
+                                  : 'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -203,20 +207,22 @@ class _ViewManageState extends State<ViewManage> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(10),
                         color: Colors.black.withValues(alpha: 0.5),
-                        child: const Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Jordan 1 Retro High Dior',
+                              itemIndex.name.toString(),
                               style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
                                 fontSize: 16,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
+                              maxLines: 2,
                             ),
                             Text(
-                              '฿85,000',
+                              '฿${itemIndex.price.toString()}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.white70,
@@ -235,4 +241,98 @@ class _ViewManageState extends State<ViewManage> {
       ],
     );
   }
+
+  List<Product> itemList = [
+    Product(
+      id: '0',
+      name: 'Air Jordan 1 Low OG Travis Scott Fragment',
+      description:
+          'Released in 2021, this is a rare triple collaboration between Travis Scott, Fragment Design (Hiroshi Fujiwara), and Jordan Brand. The design features a reversed Swoosh, clean white/blue/black color blocking, and branding from both collaborators — making it one of the most iconic collabs in sneaker history.',
+      price: 1767,
+      imageUrl:
+          'https://i.pinimg.com/1200x/c7/26/9b/c7269bf9043c3cdf5567356786128bce.jpg',
+      glbUrl: 'air_jordan_1_low_og_travis_scott_fragment.glb',
+    ),
+    Product(
+      id: '1',
+      name: 'Air Jordan 1 Low OG Travis Scott Mocha',
+      description:
+          'Launched in 2019, this was the first Travis Scott Jordan 1 Low. It introduced the reversed Swoosh trend and used earthy Mocha tones that became his signature. It marked the beginning of the “Cactus Jack” sneaker craze.',
+      price: 1938,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_low_og_travis_scott_mocha.glb',
+    ),
+    Product(
+      id: '2',
+      name: 'Air Jordan 1 Low OG Travis Scott SP Mocha',
+      description:
+          'Launched in 2019, this was the first Travis Scott Jordan 1 Low. It introduced the reversed Swoosh trend and used earthy Mocha tones that became his signature. It marked the beginning of the “Cactus Jack” sneaker craze.',
+      price: 1938,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_low_og_travis_scott_sp_mocha.glb',
+    ),
+    Product(
+      id: '3',
+      name: 'Air Jordan 1 OG High Dior',
+      description:
+          'Released in 2020, this was the groundbreaking collaboration between Dior and Jordan Brand, merging high fashion with streetwear. With only 8,500 pairs made, crafted from premium Italian leather, and featuring the Dior Oblique monogram on the Swoosh — this sneaker became an instant legend.',
+      price: 11500,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_og_high_dior.glb',
+    ),
+    Product(
+      id: '4',
+      name: 'Air Jordan 1 OG High Travis Scott',
+      description:
+          'Travis Scott’s first Jordan 1 High, released in 2019. It made waves with its reversed Swoosh, Cactus Jack branding, and vintage-inspired Mocha colorway. This pair launched his long-standing partnership with Jordan Brand in a big way.',
+      price: 1700,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_og_high_travis_scott.glb',
+    ),
+    Product(
+      id: '5',
+      name: 'Air Jordan 1 OG Low Dior',
+      description:
+          'The low-top version of the Dior Jordan 1, released alongside the high in 2020. Only 4,700 pairs were produced, making it even rarer. It shares the same luxury materials, crafted in Italy, and features the iconic Dior-branded Swoosh.',
+      price: 7200,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_og_low_dior.glb',
+    ),
+    Product(
+      id: '6',
+      name: 'Air Jordan 1 Retro High Bred Toe',
+      description:
+          'Released in 2018, this colorway blends two Jordan classics — “Bred” and “Black Toe.” With its bold red, black, and white design, it’s a favorite among collectors and wearable for daily style.',
+      price: 400,
+      imageUrl: '',
+      glbUrl: 'air_jordan_1_retro_high_bred_toe.glb',
+    ),
+    Product(
+      id: '7',
+      name: 'Nike Air Force 1 Low White',
+      description:
+          'A timeless classic. Released in the early 2000s and still going strong, this all-white sneaker is simple, clean, and versatile. It’s one of Nike’s best-selling models of all time, loved for its minimal design and everyday comfort.',
+      price: 91,
+      imageUrl: '',
+      glbUrl: 'nike_air_force_1_low_white.glb',
+    ),
+    Product(
+      id: '8',
+      name: 'Nike Air Force 1 Mid White',
+      description:
+          'The mid-cut version of the AF1 with added ankle straps for support. While keeping the all-white aesthetic, it offers a slightly bolder silhouette — ideal for those who want something between the low and high versions.',
+      price: 120,
+      imageUrl: '',
+      glbUrl: 'nike_air_force_1_mid_white.glb',
+    ),
+    Product(
+      id: '9',
+      name: 'Nike Dunk SB Low Travis Scott',
+      description:
+          'Released in 2020, this pair brought wild creativity with plaid and bandana overlays that reveal hidden layers when worn or torn. A favorite among sneakerheads and skaters, it helped revive the SB Dunk line in the mainstream, thanks to Travis Scott’s influence.',
+      price: 1387,
+      imageUrl: '',
+      glbUrl: 'nike_dunk_sb_low_travis_scott.glb',
+    ),
+  ];
 }
