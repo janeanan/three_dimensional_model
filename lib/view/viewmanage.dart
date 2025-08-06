@@ -40,15 +40,14 @@ class _ViewManageState extends State<ViewManage> {
   }
 
   banner() {
+    var itemBanner = itemList[3];
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(
-          image: NetworkImage(
-            'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
-          ),
+        image: DecorationImage(
+          image: NetworkImage(itemBanner.imageUrl.toString()),
           fit: BoxFit.cover,
         ),
         boxShadow: [
@@ -123,7 +122,8 @@ class _ViewManageState extends State<ViewManage> {
                     Navigator.push<void>(
                       context,
                       MaterialPageRoute<void>(
-                        builder: (BuildContext context) => ViewDetail(),
+                        builder: (BuildContext context) =>
+                            ViewDetail(item: itemBanner),
                       ),
                     );
                   },
@@ -174,7 +174,8 @@ class _ViewManageState extends State<ViewManage> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => ViewDetail(),
+                    builder: (BuildContext context) =>
+                        ViewDetail(item: itemList[index]),
                   ),
                 );
               },
@@ -259,7 +260,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Launched in 2019, this was the first Travis Scott Jordan 1 Low. It introduced the reversed Swoosh trend and used earthy Mocha tones that became his signature. It marked the beginning of the “Cactus Jack” sneaker craze.',
       price: 1938,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/1c/59/6e/1c596e2b045ab549ff9a014ee6a976ae.jpg',
       glbUrl: 'air_jordan_1_low_og_travis_scott_mocha.glb',
     ),
     Product(
@@ -268,7 +270,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Launched in 2019, this was the first Travis Scott Jordan 1 Low. It introduced the reversed Swoosh trend and used earthy Mocha tones that became his signature. It marked the beginning of the “Cactus Jack” sneaker craze.',
       price: 1938,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/a2/04/30/a2043082a3f25aa1e4b9bc4329518aed.jpg',
       glbUrl: 'air_jordan_1_low_og_travis_scott_sp_mocha.glb',
     ),
     Product(
@@ -277,7 +280,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Released in 2020, this was the groundbreaking collaboration between Dior and Jordan Brand, merging high fashion with streetwear. With only 8,500 pairs made, crafted from premium Italian leather, and featuring the Dior Oblique monogram on the Swoosh — this sneaker became an instant legend.',
       price: 11500,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/736x/d6/58/6a/d6586a27e45d7978bbce68a57c262f2f.jpg',
       glbUrl: 'air_jordan_1_og_high_dior.glb',
     ),
     Product(
@@ -286,7 +290,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Travis Scott’s first Jordan 1 High, released in 2019. It made waves with its reversed Swoosh, Cactus Jack branding, and vintage-inspired Mocha colorway. This pair launched his long-standing partnership with Jordan Brand in a big way.',
       price: 1700,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/4e/a8/1f/4ea81f499d5bf845ad605fa5a952651c.jpg',
       glbUrl: 'air_jordan_1_og_high_travis_scott.glb',
     ),
     Product(
@@ -295,7 +300,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'The low-top version of the Dior Jordan 1, released alongside the high in 2020. Only 4,700 pairs were produced, making it even rarer. It shares the same luxury materials, crafted in Italy, and features the iconic Dior-branded Swoosh.',
       price: 7200,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/13/7b/31/137b31138fbccdd8e3156c3b0a64b5a9.jpg',
       glbUrl: 'air_jordan_1_og_low_dior.glb',
     ),
     Product(
@@ -304,7 +310,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Released in 2018, this colorway blends two Jordan classics — “Bred” and “Black Toe.” With its bold red, black, and white design, it’s a favorite among collectors and wearable for daily style.',
       price: 400,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/eb/4c/9f/eb4c9f1ace01822447abf0a0b277623b.jpg',
       glbUrl: 'air_jordan_1_retro_high_bred_toe.glb',
     ),
     Product(
@@ -313,7 +320,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'A timeless classic. Released in the early 2000s and still going strong, this all-white sneaker is simple, clean, and versatile. It’s one of Nike’s best-selling models of all time, loved for its minimal design and everyday comfort.',
       price: 91,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/ba/11/09/ba110904b5cb1411d0f3fa83e6ef1f95.jpg',
       glbUrl: 'nike_air_force_1_low_white.glb',
     ),
     Product(
@@ -322,7 +330,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'The mid-cut version of the AF1 with added ankle straps for support. While keeping the all-white aesthetic, it offers a slightly bolder silhouette — ideal for those who want something between the low and high versions.',
       price: 120,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/de/3f/92/de3f92f13411fd25964594da4c6df250.jpg',
       glbUrl: 'nike_air_force_1_mid_white.glb',
     ),
     Product(
@@ -331,7 +340,8 @@ class _ViewManageState extends State<ViewManage> {
       description:
           'Released in 2020, this pair brought wild creativity with plaid and bandana overlays that reveal hidden layers when worn or torn. A favorite among sneakerheads and skaters, it helped revive the SB Dunk line in the mainstream, thanks to Travis Scott’s influence.',
       price: 1387,
-      imageUrl: '',
+      imageUrl:
+          'https://i.pinimg.com/1200x/e9/66/4e/e9664e7e643a6b02c68b5150f7638a9c.jpg',
       glbUrl: 'nike_dunk_sb_low_travis_scott.glb',
     ),
   ];
